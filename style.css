@@ -1,0 +1,264 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background:rgba(0, 0, 0, 0) linear-gradient(to right, rgb(179, 85, 49), rgb(32, 40, 96)) repeat scroll 0% 0%;
+    color: rgb(0, 0, 0);
+
+
+    display: grid;
+    grid:
+    "header header header header" auto
+    "....... lists active ......." auto / 1fr minmax(100px, 300px) minmax(250px, 500px)
+}
+
+.title{
+    grid-area: header;
+    text-align: center;
+    font-size:  calc(7vw + 2rem);
+    font-weight: 700;
+    color: rgba(0,0,0,.2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: -0.1em 0 0.5em;
+}
+
+
+.all tasks{
+    grid-area: lists;
+}
+
+
+.task-list {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    list-style: circle;
+    padding-left: 1.1em;
+
+}
+
+
+.list-name{
+    cursor: pointer;
+}
+
+
+.list-name:hover{
+    opacity: 0.7;
+}
+
+.new{
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    font-size: inherit;
+    outline: none;
+    padding: 0.20em;
+    transition: border-bottom 150ms ease-in;
+    order: 2;
+}
+
+
+
+.new::placeholder{
+    opacity: 0.3;
+}
+
+
+
+form {
+    display: flex;
+}
+
+.btn{
+    cursor: pointer;
+    background:  0;
+    border: 0;
+    padding: 0;
+    color: inherit;
+}
+
+.btn.create{
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: 0.25em;
+    transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover{
+    opacity: 0.7;
+}
+
+
+.btn.delete{
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    font-size: 1rem;
+    transition: color 200ms;
+}
+
+
+.btn.delete:hover{
+    color: red;
+}
+
+
+.new:focus {
+    border-bottom-width: 3px;
+}
+
+.new:focus::placeholder {
+    opacity: 0.2;
+}
+
+
+
+.new.list {
+    font-size: 1.2rem;
+    background: rgba(245, 247, 245, 0.288);
+}
+
+.active-list{
+    font-weight: 700;
+
+}
+
+.new.task{
+    margin-bottom: 0;
+    
+}
+
+.todo-list{
+    --spacer: 1rem;
+
+    
+    grid-area: active;
+    background: rgba(219, 240, 102, 0.993);
+    color: rgb(22, 22, 22);
+}
+
+.todo-header{
+   padding: var(--spacer);
+   background: rgb(77, 185, 199);
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   
+}
+
+.list-title{
+    margin: 0 1em 0 0;
+}
+
+.task-count{
+    margin: 0;
+    font-size: 1rem;
+}
+
+.todo-body{
+    padding: var(--spacer);
+    position: relative;
+}
+
+
+.new-task-creator .create {
+    color:green;
+}
+
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+
+.task label {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+   
+}
+
+
+
+.task {
+    position: relative;
+    margin-bottom: 1.25em;
+
+}
+
+
+.task::after {
+   content: ""; 
+   position: absolute;
+   right: 0;
+   left: 0;
+   bottom: -0.5em;
+   height: 2px;
+   background: currentColor;
+   opacity: 0.1;
+}
+
+.custom-checkbox{
+    --size: .50em;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    margin-right: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: transform 300ms ease-in-out;
+}
+
+.task:hover .custom-checkbox {
+    transform: scale(1.2);
+    color: rgb(255, 0, 0);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox{
+    background:  rgb(255, 0, 0);
+    border-color: rgb(255, 0, 0);
+    box-shadow: inset 0 0 0px 2px white;
+}
+
+
+[type="checkbox"]:checked + label {
+    opacity: 0.5;
+}
+
+.task label::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    left: 1.2em;
+    top: 50%;
+    height: 3px;
+    background:rgb(255, 0, 0) ;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+.delete-stuff {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -100px;
+    color: black;
+
+}
+
